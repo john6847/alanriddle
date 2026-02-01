@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+        <title>Alan Riddell - Light Editorial Edition</title>
+        <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,100..900;1,9..144,100..900&amp;family=Inter:wght@100..900&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap"
+            rel="stylesheet"
+        />
+        <script id="tailwind-config">
+            tailwind.config = {
+                darkMode: "class",
+                theme: {
+                    extend: {
+                        colors: {
+                            obsidian: "#0F0F10",
+                            charcoal: "#1A1A1C",
+                            "gallery-white": "#F8F7F4",
+                            "champagne-gold": "#B3935C",
+                            "muted-champagne": "#A68A56",
+                            "paper-gray": "#F2F0EB",
+                        },
+                        fontFamily: {
+                            display: ["Fraunces", "serif"],
+                            "serif-hero": ["Playfair Display", "serif"],
+                            body: ["Inter", "sans-serif"],
+                        },
+                        letterSpacing: {
+                            "tighter-editorial": "-0.04em",
+                            "widest-luxury": "0.4em",
+                        },
+                    },
+                },
+            };
+        </script>
+        <style type="text/tailwindcss">
+            @layer base {
+                body {
+                    @apply bg-gallery-white text-charcoal antialiased font-body selection:bg-champagne-gold/20;
+                    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+                }
+            }
+            .noise-texture {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url("https://grainy-gradients.vercel.app/noise.svg");
+                opacity: 0.03;
+                pointer-events: none;
+                z-index: 9999;
+            }
+            .editorial-grid {
+                background-image: linear-gradient(
+                        to right,
+                        rgba(0, 0, 0, 0.03) 1px,
+                        transparent 1px
+                    ),
+                    linear-gradient(
+                        to bottom,
+                        rgba(0, 0, 0, 0.03) 1px,
+                        transparent 1px
+                    );
+                background-size: 80px 80px;
+            }
+            .hero-kerning {
+                letter-spacing: -0.06em;
+            }
+            .vertical-line {
+                width: 1px;
+                background: linear-gradient(
+                    to bottom,
+                    transparent,
+                    rgba(179, 147, 92, 0.3),
+                    transparent
+                );
+            }
+            .portrait-frame {
+                clip-path: polygon(0 0, 100% 0, 100% 85%, 85% 100%, 0 100%);
+            }
+            .nav-link {
+                @apply text-[10px] uppercase tracking-[0.2em] font-semibold text-charcoal/60 hover:text-champagne-gold transition-colors duration-300;
+            }
+        </style>
+    </head>
+    <body class="overflow-x-hidden">
+        <div class="noise-texture"></div>
+        <header
+            class="fixed top-0 left-0 w-full z-50 bg-gallery-white/80 backdrop-blur-md border-b border-charcoal/5"
+        >
+            <div
+                class="max-w-[1600px] mx-auto px-12 h-20 flex items-center justify-between"
+            >
+                <div class="flex items-center gap-8">
+                    <div
+                        class="w-10 h-10 border border-champagne-gold flex items-center justify-center"
+                    >
+                        <a href="/">
+                            <span
+                            class="font-display text-lg font-light text-champagne-gold"
+                            >AR</span
+                        >
+                        </a>
+                    </div>
+                    <div
+                        class="hidden lg:flex items-center gap-1 bg-paper-gray p-1 rounded-full border border-charcoal/5"
+                    >
+                        <button
+                            class="w-8 h-8 rounded-full text-[9px] font-bold bg-champagne-gold text-white"
+                        >
+                            EN
+                        </button>
+                        <a href="./fr/index.html"
+                            class="w-8 h-8 flex items-center justify-center rounded-full text-[9px] font-bold text-charcoal/40 hover:text-charcoal transition-colors"
+                        >
+                            FR
+                        </a>
+                    </div>
+                </div>
+                <nav class="hidden md:flex items-center gap-12">
+                    <a class="nav-link" href="#expertise">Practice Areas</a>
+                    <a class="nav-link" href="#timeline">Case History</a>
+                    <a class="nav-link" href="#contact">Contact</a>
+                </nav>
+                <div class="flex items-center gap-6">
+                    <span
+                        class="material-symbols-outlined text-charcoal/80 cursor-pointer"
+                        >search</span
+                    >
+                    <span
+                        class="material-symbols-outlined text-charcoal/80 cursor-pointer lg:hidden"
+                        >menu</span
+                    >
+                </div>
+            </div>
+        </header>
+
+        <main class="pt-20">
+            <section
+                class="relative min-h-[90vh] flex items-center px-12 lg:px-24 editorial-grid"
+                id="hero"
+            >
+                <div class="absolute top-12 right-12 flex items-center gap-4">
+                    <span
+                        class="text-[10px] uppercase tracking-widest text-charcoal/40"
+                        >Ottawa, ON</span
+                    >
+                    <div class="w-12 h-px bg-charcoal/10"></div>
+                    <span
+                        class="text-[10px] uppercase tracking-widest text-charcoal/40"
+                        >Since 2001</span
+                    >
+                </div>
+                <div
+                    class="grid grid-cols-12 w-full max-w-[1600px] mx-auto items-end gap-12 pt-20"
+                >
+                    <div class="col-span-12 lg:col-span-8 z-10">
+                        <div class="mb-10 flex items-center gap-3">
+                            <span
+                                class="w-1.5 h-1.5 bg-champagne-gold rounded-full"
+                            ></span>
+                            <span
+                                class="text-xs uppercase tracking-[0.3em] font-medium text-muted-champagne"
+                                >Distinguished Partner</span
+                            >
+                        </div>
+                        <h1
+                            class="text-[clamp(4rem,12vw,12rem)] leading-[0.85] font-serif-hero font-light hero-kerning flex flex-col text-charcoal"
+                        >
+                            <span>ALAN</span>
+                            <span class="flex items-center gap-8">
+                                RIDDELL
+                                <span
+                                    class="hidden lg:block h-px flex-1 bg-charcoal/10 mt-8"
+                                ></span>
+                            </span>
+                        </h1>
+                        <div
+                            class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-16 max-w-3xl"
+                        >
+                            <div class="flex flex-col gap-4">
+                                <span
+                                    class="text-[7rem] font-display font-thin leading-none text-charcoal/[0.03] italic"
+                                    >25+</span
+                                >
+                                <div class="flex flex-col -mt-14 pl-4">
+                                    <span
+                                        class="text-3xl font-display italic text-muted-champagne"
+                                        >Years</span
+                                    >
+                                    <p
+                                        class="text-[10px] text-charcoal/50 uppercase tracking-widest mt-2"
+                                    >
+                                        Of Experience
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-end pb-4">
+                                <p
+                                    class="text-xl font-light text-charcoal/70 leading-relaxed font-display italic"
+                                >
+                                    Alan Riddell is a senior partner at Soloway
+                                    Wright LLP in Ottawa, specializing in
+                                    Employment, Labour, and Public Law. With
+                                    over 25 years of experience, he advises and
+                                    represents clients in complex workplace,
+                                    human rights, constitutional, and
+                                    administrative law matters, and has appeared
+                                    before all levels of court, including the
+                                    Supreme Court of Canada. Fluent in English
+                                    and French, Alan is known for his strategic,
+                                    results-driven advocacy in high-stakes
+                                    cases.
+                                </p>
+                                <div
+                                    class="mt-10 group cursor-pointer flex items-center gap-4"
+                                >
+                                    <div
+                                        class="w-10 h-10 border border-charcoal/10 rounded-full flex items-center justify-center group-hover:border-champagne-gold transition-colors"
+                                    >
+                                        <span
+                                            class="material-symbols-outlined text-sm group-hover:text-champagne-gold"
+                                            >arrow_downward</span
+                                        >
+                                    </div>
+                                    <span
+                                        class="text-[10px] uppercase tracking-widest font-bold text-charcoal/60"
+                                        >Explore History</span
+                                    >
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="col-span-12 lg:col-span-4 relative flex justify-end"
+                    >
+                        <div
+                            class="relative w-full aspect-[4/5] max-w-md shadow-2xl"
+                        >
+                            <div
+                                class="absolute -inset-4 border border-champagne-gold/10 portrait-frame"
+                            ></div>
+                            <img
+                                alt="Alan Riddell"
+                                class="w-full h-full object-cover portrait-frame grayscale contrast-125 brightness-105"
+                                src="allan.webp"
+                            />
+                            <div
+                                class="absolute bottom-6 -left-8 bg-paper-gray p-6 border-l-4 border-champagne-gold shadow-xl z-20"
+                            >
+                                <span
+                                    class="block text-[8px] uppercase tracking-widest text-muted-champagne mb-1"
+                                    >Status</span
+                                >
+                                <span
+                                    class="text-xs font-display tracking-widest italic uppercase text-charcoal"
+                                    >Senior Partner — Employment, Labour &amp; Public
+                                    Law</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="py-32 px-12 lg:px-24 bg-paper-gray/50"
+                id="expertise"
+            >
+                <div class="max-w-[1600px] mx-auto">
+                    <div
+                        class="flex flex-col lg:flex-row justify-between items-end mb-24 gap-8"
+                    >
+                        <div class="max-w-2xl">
+                            <span
+                                class="text-[10px] uppercase tracking-[0.5em] text-muted-champagne mb-6 block"
+                                >Legal Architecture</span
+                            >
+                            <h2
+                                class="text-6xl lg:text-8xl font-serif-hero italic font-light leading-tight text-charcoal"
+                            >
+                                Elite <br />
+                                <span class="text-champagne-gold"
+                                    >Specializations</span
+                                >
+                            </h2>
+                        </div>
+                        <p
+                            class="text-charcoal/50 max-w-sm text-sm leading-relaxed uppercase tracking-wider"
+                        >
+                            Strategic counsel for organizational transformations
+                            and protection of fundamental individual rights
+                            within the Canadian framework.
+                        </p>
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                        <div
+                            class="group relative border-t border-charcoal/10 pt-12 pb-20 hover:border-champagne-gold transition-colors duration-700"
+                        >
+                            <span
+                                class="font-display text-6xl text-charcoal/[0.03] absolute -top-8 left-0 group-hover:text-champagne-gold/10 transition-colors"
+                                >01</span
+                            >
+                            <div
+                                class="aspect-[4/3] mb-12 overflow-hidden border border-charcoal/5 grayscale hover:grayscale-0 transition-all duration-700"
+                            >
+                                <img
+                                    alt="Employment"
+                                    class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-1000"
+                                    src="employment_law.png"
+                                />
+                            </div>
+                            <h3
+                                class="text-3xl font-display mb-6 group-hover:text-champagne-gold transition-colors text-charcoal"
+                            >
+                                Employment Law
+                            </h3>
+                            <p
+                                class="text-charcoal/60 text-sm leading-relaxed mb-8 max-w-xs"
+                            >
+                                Wrongful dismissal and executive advocacy at the
+                                highest provincial and federal levels.
+                            </p>
+                            <div
+                                class="flex items-center gap-4 text-[10px] uppercase tracking-widest font-bold text-charcoal"
+                            >
+                                
+                                <div class="w-8 h-px bg-champagne-gold"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative border-t border-charcoal/10 pt-12 pb-20 hover:border-champagne-gold transition-colors duration-700"
+                        >
+                            <span
+                                class="font-display text-6xl text-charcoal/[0.03] absolute -top-8 left-0 group-hover:text-champagne-gold/10 transition-colors"
+                                >02</span
+                            >
+                            <div
+                                class="aspect-[4/3] mb-12 overflow-hidden border border-charcoal/5 grayscale hover:grayscale-0 transition-all duration-700"
+                            >
+                                <img
+                                    alt="Labour"
+                                    class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-1000"
+                                    src="labor_relation.png"
+                                />
+                            </div>
+                            <h3
+                                class="text-3xl font-display mb-6 group-hover:text-champagne-gold transition-colors text-charcoal"
+                            >
+                                Labour Relations
+                            </h3>
+                            <p
+                                class="text-charcoal/60 text-sm leading-relaxed mb-8 max-w-xs"
+                            >
+                                Collective bargaining strategy and navigation of
+                                complex unionized environments.
+                            </p>
+                            <div
+                                class="flex items-center gap-4 text-[10px] uppercase tracking-widest font-bold text-charcoal"
+                            >
+                                
+                                <div class="w-8 h-px bg-champagne-gold"></div>
+                            </div>
+                        </div>
+                        <div
+                            class="group relative border-t border-charcoal/10 pt-12 pb-20 hover:border-champagne-gold transition-colors duration-700"
+                        >
+                            <span
+                                class="font-display text-6xl text-charcoal/[0.03] absolute -top-8 left-0 group-hover:text-champagne-gold/10 transition-colors"
+                                >03</span
+                            >
+                            <div
+                                class="aspect-[4/3] mb-12 overflow-hidden border border-charcoal/5 grayscale hover:grayscale-0 transition-all duration-700"
+                            >
+                                <img
+                                    alt="Public"
+                                    class="w-full h-full object-cover opacity-80 group-hover:scale-105 transition-all duration-1000"
+                                    src="practical_law.png"
+                                />
+                            </div>
+                            <h3
+                                class="text-3xl font-display mb-6 group-hover:text-champagne-gold transition-colors text-charcoal"
+                            >
+                                Public Law
+                            </h3>
+                            <p
+                                class="text-charcoal/60 text-sm leading-relaxed mb-8 max-w-xs"
+                            >
+                                Constitutional litigation and judicial reviews
+                                impacting national administrative standards.
+                            </p>
+                            <div
+                                class="flex items-center gap-4 text-[10px] uppercase tracking-widest font-bold text-charcoal"
+                            >
+                                
+                                <div class="w-8 h-px bg-champagne-gold"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="py-40 px-12 lg:px-24 border-t border-charcoal/5"
+                id="timeline"
+            >
+                <div class="max-w-[1600px] mx-auto grid grid-cols-12 gap-12">
+                    <div
+                        class="col-span-12 lg:col-span-4 lg:sticky lg:top-40 h-fit"
+                    >
+                        <span
+                            class="text-[10px] uppercase tracking-[0.5em] text-muted-champagne mb-6 block"
+                            >Case History</span
+                        >
+                        <h2
+                            class="text-5xl font-serif-hero font-light italic mb-8 text-charcoal"
+                        >
+                            Landmark <br />
+                            <span class="text-champagne-gold">Precedents</span>
+                        </h2>
+                        <p
+                            class="text-charcoal/50 text-sm leading-loose max-w-xs"
+                        >
+                            A curated selection of cases that have redefined the
+                            landscape of Canadian law through rigorous advocacy.
+                        </p>
+                    </div>
+                    <div class="col-span-12 lg:col-span-8">
+                        <div class="relative space-y-32">
+                            <div
+                                class="absolute left-0 top-0 w-px h-full vertical-line"
+                            ></div>
+                            <div class="relative pl-12 group">
+                                <div
+                                    class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-champagne-gold"
+                                ></div>
+                                <span
+                                    class="block text-[10px] uppercase tracking-[0.3em] text-charcoal/40 mb-4 group-hover:text-champagne-gold transition-colors"
+                                    >1997 • Supreme Court of Canada</span
+                                >
+                                <div
+                                    class="flex flex-col lg:flex-row lg:items-end gap-6"
+                                >
+                                    <h4
+                                        class="text-4xl font-display font-light text-charcoal"
+                                    >
+                                        Dagg v. Minister of Finance
+                                    </h4>
+                                    <span
+                                        class="text-[9px] border border-charcoal/10 px-3 py-1 rounded-full text-charcoal/50 uppercase mb-2"
+                                        >Privacy &amp; Disclosure</span
+                                    >
+                                </div>
+                                <p
+                                    class="mt-6 text-charcoal/70 font-light text-lg leading-relaxed max-w-2xl"
+                                >
+                                    Canada’s first major court decision
+                                    interpreting the rights of Federal
+                                    government employees under the Access to
+                                    Information and Privacy Acts.
+                                </p>
+                            </div>
+                            <div class="relative pl-12 group">
+                                <div
+                                    class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-charcoal/10 group-hover:bg-champagne-gold transition-colors"
+                                ></div>
+                                <span
+                                    class="block text-[10px] uppercase tracking-[0.3em] text-charcoal/40 mb-4 group-hover:text-champagne-gold transition-colors"
+                                    >1991 — 1992 • Public Service</span
+                                >
+                                <div
+                                    class="flex flex-col lg:flex-row lg:items-end gap-6"
+                                >
+                                    <h4
+                                        class="text-4xl font-display font-light text-charcoal"
+                                    >
+                                        Counsel to Deputy Minister
+                                    </h4>
+                                    <span
+                                        class="text-[9px] border border-charcoal/10 px-3 py-1 rounded-full text-charcoal/50 uppercase mb-2"
+                                        >National Revenue</span
+                                    >
+                                </div>
+                                <p
+                                    class="mt-6 text-charcoal/70 font-light text-lg leading-relaxed max-w-2xl"
+                                >
+                                    Served as counsel and agent to the Deputy
+                                    Minister of National Revenue on Employment
+                                    Insurance appeals to the Tax Court of
+                                    Canada.
+                                </p>
+                            </div>
+                            <div class="relative pl-12 group">
+                                <div
+                                    class="absolute left-[-4px] top-2 w-2 h-2 rounded-full bg-charcoal/10 group-hover:bg-champagne-gold transition-colors"
+                                ></div>
+                                <span
+                                    class="block text-[10px] uppercase tracking-[0.3em] text-charcoal/40 mb-4 group-hover:text-champagne-gold transition-colors"
+                                    >2007 • Ontario Superior Court</span
+                                >
+                                <div
+                                    class="flex flex-col lg:flex-row lg:items-end gap-6"
+                                >
+                                    <h4
+                                        class="text-4xl font-display font-light text-charcoal"
+                                    >
+                                        Riddell v. Conservative Party
+                                    </h4>
+                                    <span
+                                        class="text-[9px] border border-charcoal/10 px-3 py-1 rounded-full text-charcoal/50 uppercase mb-2"
+                                        >Contract &amp; Political Law</span
+                                    >
+                                </div>
+                                <p
+                                    class="mt-6 text-charcoal/70 font-light text-lg leading-relaxed max-w-2xl"
+                                >
+                                    Successfully enforced a binding agreement
+                                    against the Conservative Party of Canada,
+                                    setting a precedent for the legal
+                                    accountability of political organizations.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section
+                class="py-48 px-12 lg:px-24 bg-obsidian text-gallery-white overflow-hidden relative"
+                id="contact"
+            >
+                <div
+                    class="absolute top-0 left-0 w-full h-full opacity-10 editorial-grid"
+                ></div>
+                <div
+                    class="absolute top-0 right-0 w-1/4 h-full bg-champagne-gold/10 -skew-x-12 translate-x-1/2"
+                ></div>
+                <div class="max-w-4xl mx-auto text-center relative z-10">
+                    <span
+                        class="text-[10px] font-bold uppercase tracking-[0.5em] text-champagne-gold mb-12 block"
+                        >Secure Consultation</span
+                    >
+                    <h2
+                        class="text-7xl lg:text-9xl font-serif-hero font-bold italic leading-[0.85] mb-16"
+                    >
+                        Define Your <br />
+                        Strategy
+                    </h2>
+                    <div
+                        class="flex flex-col sm:flex-row items-center justify-center gap-10"
+                    >
+                        <a href="mailto:riddella@solowaywright.com"
+                            class="bg-champagne-gold text-obsidian px-12 py-6 text-[10px] font-bold uppercase tracking-[0.3em] hover:bg-white transition-all duration-500 shadow-2xl"
+                        >
+                            Request Advisory Session
+                </a>
+                        
+                    </div>
+                </div>
+            </section>
+            <footer class="py-24 px-12 lg:px-24 bg-gallery-white">
+                <div
+                    class="max-w-[1600px] mx-auto flex flex-col lg:flex-row justify-between gap-24"
+                >
+                    <div class="max-w-md">
+                        <div
+                            class="w-12 h-12 border border-charcoal/10 flex items-center justify-center mb-8"
+                        >
+                            <span
+                                class="font-display text-xl text-champagne-gold"
+                                >AR</span
+                            >
+                        </div>
+                        <p
+                            class="text-charcoal/40 text-[10px] uppercase tracking-widest leading-loose font-medium"
+                        >
+                            Alan Riddell Professional Corporation <br />
+                            Ottawa, Ontario <br />
+                            Canada
+                        </p>
+                    </div>
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16 flex-1 lg:justify-items-end"
+                    >
+                        <div class="space-y-6">
+                            <span
+                                class="text-[10px] uppercase tracking-widest text-muted-champagne font-bold"
+                                >Office</span
+                            >
+                            <p
+                                class="text-charcoal/70 text-sm leading-relaxed font-light italic"
+                            >
+                                427 Laurier Avenue West<br />
+                                Suite 700<br />
+                                Ottawa, Ontario K1R 7Y2
+                            </p>
+                        </div>
+                        <div class="space-y-6">
+                            <span
+                                class="text-[10px] uppercase tracking-widest text-muted-champagne font-bold"
+                                >Connect</span
+                            >
+                            <p
+                                class="text-charcoal/70 text-sm leading-relaxed font-light italic"
+                            >
+                                Tel: 613-236-0111<br />
+                                Toll Free: 1-866-207-5880<br />
+                                Fax: 613-238-8507<br />
+                                E: riddella@solowaywright.com
+                            </p>
+                        </div>
+                        <div class="space-y-6">
+                            <span
+                                class="text-[10px] uppercase tracking-widest text-muted-champagne font-bold"
+                                >Vault</span
+                            >
+                            <div class="flex gap-4">
+                                <span
+                                    class="material-symbols-outlined text-charcoal/20 hover:text-champagne-gold transition-colors cursor-pointer"
+                                    >history_edu</span
+                                >
+                                <span
+                                    class="material-symbols-outlined text-charcoal/20 hover:text-champagne-gold transition-colors cursor-pointer"
+                                    >account_balance</span
+                                >
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="max-w-[1600px] mx-auto mt-24 pt-8 border-t border-charcoal/5 flex flex-col md:flex-row justify-between items-center gap-4"
+                >
+                    <p
+                        class="text-[9px] uppercase tracking-[0.3em] text-charcoal/30"
+                    >
+                        © 2026 Alan Riddell. All rights reserved.
+                    </p>
+                    <div class="flex gap-8">
+                        <p
+                            class="text-[9px] uppercase tracking-[0.3em] text-charcoal/30"
+                        >
+                            Terms of Engagement
+                        </p>
+                        <p
+                            class="text-[9px] uppercase tracking-[0.3em] text-charcoal/30"
+                        >
+                            Privacy Policy
+                        </p>
+                    </div>
+                </div>
+            </footer>
+        </main>
+        <div
+            class="fixed right-12 top-1/2 -translate-y-1/2 flex flex-col items-center gap-8 pointer-events-none hidden xl:flex"
+        >
+            <span
+                class="text-[9px] font-bold rotate-90 tracking-widest text-muted-champagne"
+                >EST. 2001</span
+            >
+            <div class="w-px h-24 bg-charcoal/10 mx-auto"></div>
+            <span
+                class="text-[9px] font-bold rotate-90 tracking-widest text-charcoal/20"
+                >EDITION 01</span
+            >
+        </div>
+    </body>
+</html>
